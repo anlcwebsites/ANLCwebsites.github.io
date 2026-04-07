@@ -1,1 +1,83 @@
 We build websites for real estate agents to promote their listings and services.
+# ANLC — Personal Professional Websites
+
+A single-file website system for professionals. Built to deploy fast from a business card.
+
+## Files
+
+| File | Purpose |
+|------|---------|
+| `index.html` | Core structure + render engine. Edit the `CLIENT` object per client. |
+| `theme-classic.css` | Warm navy/gold serif — traditional agents, financial, legal |
+| `theme-modern.css` | Clean white/blue sans — tech-forward, urban, younger pros |
+| `theme-bold.css` | Dark + vivid red display — luxury, top producers, strong personal brands |
+
+## Deploying a New Client
+
+1. Copy `index.html` → edit the `CLIENT` object at the bottom of the file
+2. Set `CLIENT.theme` to desired CSS file
+3. Upload both `index.html` + the chosen `theme-*.css` to the repo
+4. Client buys their domain → point to Firebase Hosting
+
+## CLIENT Object Reference
+
+```js
+const CLIENT = {
+  // Identity
+  name:        "Full Name",
+  profession:  "Job Title",
+  company:     "Brokerage / Company",
+  license:     "License # (or empty string)",
+  tagline:     "One-line value proposition",
+  bio:         "2-3 sentence about paragraph",
+  photo:       "https://url-to-headshot.jpg",  // "" to hide
+
+  // Highlights — 3 bullet points shown under bio
+  highlights: ["..."],
+
+  // Services — up to 6 recommended
+  services: [
+    { icon: "🏠", title: "...", desc: "..." },
+  ],
+
+  // Contact
+  phone: "(000) 000-0000",
+  email: "name@domain.com",
+  area:  "Serving X, Y & surrounding areas",
+
+  // Links — shown as button grid
+  links: [
+    { label: "📞 Call Me",    href: "tel:...",     type: "phone"    },
+    { label: "✉️ Email",      href: "mailto:...",  type: "email"    },
+    { label: "📅 Book Call",  href: "https://...", type: "calendar" },
+    // types: phone | email | listings | review | linkedin | social | calendar | website
+  ],
+
+  // Testimonials — leave [] to hide section
+  testimonials: [
+    { quote: "...", author: "Name" },
+  ],
+
+  // Nav links
+  nav: [
+    { label: "About",    href: "#about"    },
+    { label: "Services", href: "#services" },
+    { label: "Connect",  href: "#links"    },
+    { label: "Contact",  href: "#contact"  },
+  ],
+
+  // Theme file name
+  theme: "theme-classic.css",  // or theme-modern.css / theme-bold.css
+};
+```
+
+## Switching Themes
+
+Change one line in `CLIENT`:
+```js
+theme: "theme-bold.css",
+```
+
+---
+
+*Built by ANLC — [anlc.dev](https://anlc.dev)*

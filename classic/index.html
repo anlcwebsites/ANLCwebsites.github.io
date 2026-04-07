@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="page-title">Loading...</title>
+
+  <!-- Google Fonts loaded dynamically per theme -->
+  <link id="google-fonts" rel="stylesheet" href="" />
+
+  <!-- Theme stylesheet — swap this file per client template -->
+  <link id="theme-css" rel="stylesheet" href="theme-classic.css" />
+
+  <style>
+    /* ── Reset & base ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════
+       STRUCTURAL REGIONS  (themes control ALL visual styling)
+       ══════════════════════════════════════════════════════ -->
+
+  <!-- NAV -->
+  <header id="site-header">
+    <nav id="main-nav">
+      <span id="nav-name" class="nav-brand"></span>
+      <ul id="nav-links" class="nav-list"></ul>
+    </nav>
+  </header>
+
+  <!-- HERO / LANDING -->
+  <section id="hero" class="section-hero">
+    <div class="hero-inner">
+      <div id="hero-badge" class="hero-badge"></div>          <!-- profession badge -->
+      <h1 id="hero-name" class="hero-name"></h1>
+      <p  id="hero-tagline" class="hero-tagline"></p>
+      <div id="hero-cta" class="hero-cta"></div>              <!-- primary CTA buttons -->
+    </div>
+    <div id="hero-visual" class="hero-visual"></div>          <!-- theme can place art/photo here -->
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section-about">
+    <div class="section-inner">
+      <div id="about-photo" class="about-photo"></div>
+      <div class="about-text">
+        <h2 class="section-heading">About</h2>
+        <p id="about-bio" class="about-bio"></p>
+        <ul id="about-highlights" class="about-highlights"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section-services">
+    <div class="section-inner">
+      <h2 class="section-heading">What I Do</h2>
+      <div id="services-grid" class="services-grid"></div>
+    </div>
+  </section>
+
+  <!-- LINKS / DIRECTORY -->
+  <section id="links" class="section-links">
+    <div class="section-inner">
+      <h2 class="section-heading">Connect</h2>
+      <div id="links-grid" class="links-grid"></div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS (optional) -->
+  <section id="testimonials" class="section-testimonials">
+    <div class="section-inner">
+      <h2 class="section-heading">What Clients Say</h2>
+      <div id="testimonials-grid" class="testimonials-grid"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section-contact">
+    <div class="section-inner">
+      <h2 class="section-heading">Get In Touch</h2>
+      <div id="contact-cards" class="contact-cards"></div>
+      <p id="contact-area" class="contact-area"></p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="site-footer">
+    <p id="footer-copy" class="footer-copy"></p>
+    <p class="footer-credit">Site by <a href="https://anlc.dev" target="_blank">ANLC</a></p>
+  </footer>
+
+
+  <!-- ══════════════════════════════════════════════════════
+       DATA  —  edit this object per client
+       ══════════════════════════════════════════════════════ -->
+  <script>
+  const CLIENT = {
+    /* ── Identity ────────────────────────────── */
+    name:        "Sarah Mitchell",
+    profession:  "Real Estate Agent",
+    company:     "Compass Realty",
+    license:     "DRE #01234567",          // leave "" to hide
+    tagline:     "Finding you the perfect place to call home.",
+    bio:         "With over 12 years of experience in the Seattle metro area, I specialize in residential buyers and sellers who want a seamless, stress-free transaction. My approach is personal, data-driven, and always in your corner.",
+    photo:       "",                        // URL or "" to hide section
+
+    /* ── Highlights (bullet points under bio) ── */
+    highlights: [
+      "📍 Seattle, Bellevue & Eastside specialist",
+      "🏆 Top 5% sales volume — King County 2023",
+      "🤝 200+ closed transactions",
+    ],
+
+    /* ── Services ─────────────────────────────── */
+    services: [
+      { icon: "🏠", title: "Buyer Representation",  desc: "Expert guidance from first showing to closing day." },
+      { icon: "📈", title: "Seller Marketing",       desc: "Professional photography, staging consult & targeted reach." },
+      { icon: "🔎", title: "Market Analysis",         desc: "Comprehensive CMAs so you price with confidence." },
+      { icon: "📋", title: "Relocation Services",    desc: "Moving to the area? I'll make the transition seamless." },
+    ],
+
+    /* ── Contact ─────────────────────────────── */
+    phone:     "(206) 555-0192",
+    email:     "sarah@compassrealty.com",
+    area:      "Serving Seattle, Bellevue, Kirkland & surrounding areas",
+
+    /* ── Link Directory ──────────────────────── */
+    links: [
+      { label: "📞 Call Me",          href: "tel:+12065550192",                     type: "phone"    },
+      { label: "✉️ Send Email",        href: "mailto:sarah@compassrealty.com",        type: "email"    },
+      { label: "🏡 My Listings",       href: "https://compass.com/agents/sarah",      type: "listings" },
+      { label: "⭐ Zillow Reviews",    href: "https://zillow.com/profile/sarah",      type: "review"   },
+      { label: "💼 LinkedIn",          href: "https://linkedin.com/in/sarahmitchell", type: "linkedin" },
+      { label: "📸 Instagram",         href: "https://instagram.com/sarahsells206",   type: "social"   },
+      { label: "📅 Book a Consult",    href: "https://calendly.com/sarahmitchell",    type: "calendar" },
+    ],
+
+    /* ── Testimonials (optional, leave [] to hide) ── */
+    testimonials: [
+      { quote: "Sarah made buying our first home completely stress-free. She knew exactly what we needed before we did.", author: "The Chen Family" },
+      { quote: "We got $40k over asking. Her marketing strategy was unlike anything we'd seen.", author: "Mark & Julie R." },
+    ],
+
+    /* ── Nav (label → section id) ─────────────── */
+    nav: [
+      { label: "About",        href: "#about"        },
+      { label: "Services",     href: "#services"     },
+      { label: "Connect",      href: "#links"        },
+      { label: "Contact",      href: "#contact"      },
+    ],
+
+    /* ── Theme ─────────────────────────────────── */
+    // Options: "theme-classic.css" | "theme-modern.css" | "theme-bold.css"
+    theme: "theme-classic.css",
+  };
+  </script>
+
+
+  <!-- ══════════════════════════════════════════════════════
+       RENDER ENGINE  —  maps CLIENT → DOM
+       ══════════════════════════════════════════════════════ -->
+  <script>
+  (function () {
+
+    /* ── 1. Apply theme ──────────────────────── */
+    document.getElementById("theme-css").href = CLIENT.theme;
+
+    /* ── 2. Page title ───────────────────────── */
+    document.title = `${CLIENT.name} — ${CLIENT.profession}`;
+    document.getElementById("page-title").textContent = document.title;
+
+    /* ── 3. Nav ──────────────────────────────── */
+    document.getElementById("nav-name").textContent = CLIENT.name;
+    const navList = document.getElementById("nav-links");
+    CLIENT.nav.forEach(item => {
+      const li = document.createElement("li");
+      li.innerHTML = `<a href="${item.href}">${item.label}</a>`;
+      navList.appendChild(li);
+    });
+
+    /* ── 4. Hero ─────────────────────────────── */
+    document.getElementById("hero-badge").textContent =
+      CLIENT.company ? `${CLIENT.profession} · ${CLIENT.company}` : CLIENT.profession;
+    document.getElementById("hero-name").textContent    = CLIENT.name;
+    document.getElementById("hero-tagline").textContent = CLIENT.tagline;
+
+    const cta = document.getElementById("hero-cta");
+    cta.innerHTML = `
+      <a href="#contact" class="btn btn-primary">Get In Touch</a>
+      <a href="#links"   class="btn btn-secondary">View Links</a>
+    `;
+
+    /* ── 5. About ────────────────────────────── */
+    if (CLIENT.photo) {
+      document.getElementById("about-photo").innerHTML =
+        `<img src="${CLIENT.photo}" alt="Photo of ${CLIENT.name}" class="about-img" />`;
+    } else {
+      document.getElementById("about-photo").remove();
+    }
+    document.getElementById("about-bio").textContent = CLIENT.bio;
+
+    const hList = document.getElementById("about-highlights");
+    if (CLIENT.highlights?.length) {
+      CLIENT.highlights.forEach(h => {
+        const li = document.createElement("li");
+        li.textContent = h;
+        hList.appendChild(li);
+      });
+    } else {
+      hList.remove();
+    }
+
+    if (CLIENT.license) {
+      const badge = document.createElement("p");
+      badge.className = "license-badge";
+      badge.textContent = CLIENT.license;
+      document.querySelector(".about-text").appendChild(badge);
+    }
+
+    /* ── 6. Services ─────────────────────────── */
+    const grid = document.getElementById("services-grid");
+    CLIENT.services.forEach(s => {
+      const card = document.createElement("div");
+      card.className = "service-card";
+      card.innerHTML = `
+        <span class="service-icon">${s.icon}</span>
+        <h3 class="service-title">${s.title}</h3>
+        <p  class="service-desc">${s.desc}</p>
+      `;
+      grid.appendChild(card);
+    });
+
+    /* ── 7. Link Directory ───────────────────── */
+    const linksGrid = document.getElementById("links-grid");
+    CLIENT.links.forEach(l => {
+      const a = document.createElement("a");
+      a.href      = l.href;
+      a.className = `link-card link-type-${l.type}`;
+      a.target    = l.href.startsWith("http") ? "_blank" : "_self";
+      a.rel       = "noopener noreferrer";
+      a.textContent = l.label;
+      linksGrid.appendChild(a);
+    });
+
+    /* ── 8. Testimonials ─────────────────────── */
+    const tGrid = document.getElementById("testimonials-grid");
+    if (CLIENT.testimonials?.length) {
+      CLIENT.testimonials.forEach(t => {
+        const card = document.createElement("div");
+        card.className = "testimonial-card";
+        card.innerHTML = `
+          <p class="testimonial-quote">"${t.quote}"</p>
+          <p class="testimonial-author">— ${t.author}</p>
+        `;
+        tGrid.appendChild(card);
+      });
+    } else {
+      document.getElementById("testimonials").remove();
+    }
+
+    /* ── 9. Contact ──────────────────────────── */
+    const contactCards = document.getElementById("contact-cards");
+    const contactItems = [
+      { icon: "📞", label: "Phone", value: CLIENT.phone, href: `tel:${CLIENT.phone.replace(/\D/g,"")}` },
+      { icon: "✉️", label: "Email", value: CLIENT.email, href: `mailto:${CLIENT.email}` },
+    ];
+    contactItems.forEach(c => {
+      const div = document.createElement("div");
+      div.className = "contact-card";
+      div.innerHTML = `
+        <span class="contact-icon">${c.icon}</span>
+        <span class="contact-label">${c.label}</span>
+        <a class="contact-value" href="${c.href}">${c.value}</a>
+      `;
+      contactCards.appendChild(div);
+    });
+    document.getElementById("contact-area").textContent = CLIENT.area;
+
+    /* ── 10. Footer ──────────────────────────── */
+    document.getElementById("footer-copy").textContent =
+      `© ${new Date().getFullYear()} ${CLIENT.name}. All rights reserved.`;
+
+  })();
+  </script>
+
+</body>
+</html>
